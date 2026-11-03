@@ -1,0 +1,678 @@
+{
+  "id": 1,
+  "slug": "brazil-santacatarina-florianopolis-villaromanashopping",
+  "displayName": "Villa Romana Shopping",
+  "country": "Brasil",
+  "countryCode": "BR",
+  "state": "Santa Catarina",
+  "stateCode": "SC",
+  "city": "Florianópolis",
+  "address": "Av. Madre Benvenuta, 687 - Santa Mônica",
+  "postalCode": "88035-000",
+  "coordinates": {
+    "latitude": -27.589825,
+    "longitude": -48.515096
+  },
+  "canvas": {
+    "width": 1000.0,
+    "height": 700.0
+  },
+  "schemaVersion": "1.0.0",
+  "lastUpdated": "2026-10-29T10:00:00Z",
+  "searchKeywords": [
+    "villa romana",
+    "iguatemi florianopolis",
+    "santa monica",
+    "shopping floripa",
+    "madre benvenuta"
+  ],
+  "floors": [
+    {
+      "id": "11111111-1111-1111-1111-111111111111",
+      "levelOrder": -1,
+      "shortCode": "G",
+      "displayName": "Piso G - Garagem & Serviços",
+      "subtitle": "Carrefour, Estacionamento e Conveniência",
+      "stores": [
+        {
+          "id": "a0000001-0000-0000-0000-000000000001",
+          "storeNumber": "G-01",
+          "displayName": "Hipermercado Carrefour",
+          "category": "grocery",
+          "isAnchor": true,
+          "mapX": 100.0,
+          "mapY": 150.0,
+          "width": 320.0,
+          "height": 220.0,
+          "openingHours": "08:00 às 22:00",
+          "phone": "+55 48 3000-0001",
+          "tags": [
+            "mercado",
+            "compras",
+            "alimentos",
+            "padaria",
+            "acougue",
+            "conveniencia"
+          ]
+        },
+        {
+          "id": "a0000001-0000-0000-0000-000000000002",
+          "storeNumber": "G-10",
+          "displayName": "Caixas Eletrônicos 24h",
+          "category": "financial",
+          "isAnchor": false,
+          "mapX": 520.0,
+          "mapY": 150.0,
+          "width": 110.0,
+          "height": 70.0,
+          "openingHours": "10:00 às 22:00",
+          "phone": "",
+          "tags": [
+            "banco",
+            "saque",
+            "dinheiro",
+            "caixa 24 horas",
+            "bradesco",
+            "itau",
+            "santander",
+            "bb"
+          ]
+        },
+        {
+          "id": "a0000001-0000-0000-0000-000000000003",
+          "storeNumber": "G-12",
+          "displayName": "Ponto Pagamento Estacionamento",
+          "category": "parking",
+          "isAnchor": false,
+          "mapX": 660.0,
+          "mapY": 150.0,
+          "width": 120.0,
+          "height": 70.0,
+          "openingHours": "10:00 às 22:00",
+          "phone": "",
+          "tags": [
+            "estacionamento",
+            "ticket",
+            "pagamento",
+            "carro",
+            "valet"
+          ]
+        },
+        {
+          "id": "a0000001-0000-0000-0000-000000000004",
+          "storeNumber": "G-20",
+          "displayName": "Lava Rápido Ecológico DryWash",
+          "category": "services",
+          "isAnchor": false,
+          "mapX": 520.0,
+          "mapY": 460.0,
+          "width": 150.0,
+          "height": 100.0,
+          "openingHours": "10:00 às 22:00",
+          "phone": "+55 48 3000-0020",
+          "tags": [
+            "lavagem",
+            "carro",
+            "estetica automotiva",
+            "limpeza"
+          ]
+        },
+        {
+          "id": "a0000001-0000-0000-0000-000000000005",
+          "storeNumber": "G-WC",
+          "displayName": "Sanitários Piso G",
+          "category": "restroom",
+          "isAnchor": false,
+          "mapX": 820.0,
+          "mapY": 150.0,
+          "width": 90.0,
+          "height": 70.0,
+          "openingHours": "10:00 às 22:00",
+          "phone": "",
+          "tags": [
+            "banheiro",
+            "sanitarios",
+            "pcd",
+            "masculino",
+            "feminino"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "22222222-2222-2222-2222-222222222222",
+      "levelOrder": 0,
+      "shortCode": "L1",
+      "displayName": "Piso L1 - Térreo",
+      "subtitle": "Grandes Âncoras, Moda e Acesso Principal",
+      "stores": [
+        {
+          "id": "b0000001-0000-0000-0000-000000000001",
+          "storeNumber": "L1-101",
+          "displayName": "Zara",
+          "category": "apparel",
+          "isAnchor": true,
+          "mapX": 80.0,
+          "mapY": 120.0,
+          "width": 250.0,
+          "height": 200.0,
+          "openingHours": "10:00 às 22:00",
+          "phone": "+55 48 3000-0101",
+          "tags": [
+            "roupa",
+            "feminina",
+            "masculina",
+            "infantil",
+            "moda espanhola",
+            "vestido",
+            "terno"
+          ]
+        },
+        {
+          "id": "b0000001-0000-0000-0000-000000000002",
+          "storeNumber": "L1-110",
+          "displayName": "Renner",
+          "category": "apparel",
+          "isAnchor": true,
+          "mapX": 670.0,
+          "mapY": 120.0,
+          "width": 250.0,
+          "height": 200.0,
+          "openingHours": "10:00 às 22:00",
+          "phone": "+55 48 3000-0110",
+          "tags": [
+            "moda",
+            "departamento",
+            "calcados",
+            "acessorios",
+            "camisas",
+            "roupas"
+          ]
+        },
+        {
+          "id": "b0000001-0000-0000-0000-000000000003",
+          "storeNumber": "L1-125",
+          "displayName": "Camicado",
+          "category": "home",
+          "isAnchor": false,
+          "mapX": 80.0,
+          "mapY": 420.0,
+          "width": 180.0,
+          "height": 140.0,
+          "openingHours": "10:00 às 22:00",
+          "phone": "+55 48 3000-0125",
+          "tags": [
+            "casa",
+            "decoracao",
+            "mesa",
+            "cama",
+            "banho",
+            "cozinha",
+            "presentes"
+          ]
+        },
+        {
+          "id": "b0000001-0000-0000-0000-000000000004",
+          "storeNumber": "L1-130",
+          "displayName": "Livraria Leitura",
+          "category": "books",
+          "isAnchor": false,
+          "mapX": 300.0,
+          "mapY": 420.0,
+          "width": 180.0,
+          "height": 140.0,
+          "openingHours": "10:00 às 22:00",
+          "phone": "+55 48 3000-0130",
+          "tags": [
+            "livros",
+            "leitura",
+            "revistas",
+            "papelaria",
+            "presentes",
+            "mangas",
+            "hqs"
+          ]
+        },
+        {
+          "id": "b0000001-0000-0000-0000-000000000005",
+          "storeNumber": "L1-140",
+          "displayName": "Ri Happy Brinquedos",
+          "category": "toys",
+          "isAnchor": false,
+          "mapX": 740.0,
+          "mapY": 420.0,
+          "width": 180.0,
+          "height": 140.0,
+          "openingHours": "10:00 às 22:00",
+          "phone": "+55 48 3000-0140",
+          "tags": [
+            "brinquedos",
+            "criancas",
+            "jogos",
+            "lego",
+            "bonecas",
+            "carrinhos",
+            "presentes"
+          ]
+        },
+        {
+          "id": "b0000001-0000-0000-0000-000000000006",
+          "storeNumber": "L1-INF",
+          "displayName": "Balcão de Informações & Valet",
+          "category": "services",
+          "isAnchor": false,
+          "mapX": 450.0,
+          "mapY": 580.0,
+          "width": 120.0,
+          "height": 60.0,
+          "openingHours": "10:00 às 22:00",
+          "phone": "+55 48 3000-0100",
+          "tags": [
+            "informacoes",
+            "ajuda",
+            "achados e perdidos",
+            "entrada principal",
+            "madre benvenuta"
+          ]
+        },
+        {
+          "id": "b0000001-0000-0000-0000-000000000007",
+          "storeNumber": "L1-FAM",
+          "displayName": "Espaço Família & Fraldário",
+          "category": "restroom",
+          "isAnchor": false,
+          "mapX": 520.0,
+          "mapY": 420.0,
+          "width": 100.0,
+          "height": 80.0,
+          "openingHours": "10:00 às 22:00",
+          "phone": "",
+          "tags": [
+            "fraldario",
+            "amamentacao",
+            "bebe",
+            "familia",
+            "banheiro",
+            "crianca"
+          ]
+        },
+        {
+          "id": "b0000001-0000-0000-0000-000000000008",
+          "storeNumber": "L1-WC",
+          "displayName": "Sanitários Piso L1",
+          "category": "restroom",
+          "isAnchor": false,
+          "mapX": 630.0,
+          "mapY": 420.0,
+          "width": 80.0,
+          "height": 80.0,
+          "openingHours": "10:00 às 22:00",
+          "phone": "",
+          "tags": [
+            "banheiro",
+            "sanitarios",
+            "pcd",
+            "masculino",
+            "feminino"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "33333333-3333-3333-3333-333333333333",
+      "levelOrder": 1,
+      "shortCode": "L2",
+      "displayName": "Piso L2",
+      "subtitle": "Beleza, Cafeterias e Calçados",
+      "stores": [
+        {
+          "id": "c0000001-0000-0000-0000-000000000001",
+          "storeNumber": "L2-201",
+          "displayName": "Sephora",
+          "category": "beauty",
+          "isAnchor": false,
+          "mapX": 100.0,
+          "mapY": 130.0,
+          "width": 180.0,
+          "height": 130.0,
+          "openingHours": "10:00 às 22:00",
+          "phone": "+55 48 3000-0201",
+          "tags": [
+            "maquiagem",
+            "perfumes",
+            "cosmeticos",
+            "beleza",
+            "skincare",
+            "batom"
+          ]
+        },
+        {
+          "id": "c0000001-0000-0000-0000-000000000002",
+          "storeNumber": "L2-208",
+          "displayName": "Adidas Originals",
+          "category": "footwear",
+          "isAnchor": false,
+          "mapX": 310.0,
+          "mapY": 130.0,
+          "width": 150.0,
+          "height": 130.0,
+          "openingHours": "10:00 às 22:00",
+          "phone": "+55 48 3000-0208",
+          "tags": [
+            "tenis",
+            "esportes",
+            "roupas",
+            "calcados",
+            "treino",
+            "originals"
+          ]
+        },
+        {
+          "id": "c0000001-0000-0000-0000-000000000003",
+          "storeNumber": "L2-215",
+          "displayName": "Arezzo",
+          "category": "footwear",
+          "isAnchor": false,
+          "mapX": 720.0,
+          "mapY": 130.0,
+          "width": 150.0,
+          "height": 130.0,
+          "openingHours": "10:00 às 22:00",
+          "phone": "+55 48 3000-0215",
+          "tags": [
+            "sapatos",
+            "femininos",
+            "sandalias",
+            "bolsas",
+            "acessorios",
+            "botas"
+          ]
+        },
+        {
+          "id": "c0000001-0000-0000-0000-000000000004",
+          "storeNumber": "L2-K01",
+          "displayName": "Café Cultura",
+          "category": "dining",
+          "isAnchor": false,
+          "mapX": 440.0,
+          "mapY": 330.0,
+          "width": 120.0,
+          "height": 90.0,
+          "openingHours": "10:00 às 22:00",
+          "phone": "+55 48 3000-0250",
+          "tags": [
+            "cafe",
+            "expresso",
+            "cappuccino",
+            "brunch",
+            "doces",
+            "tortas",
+            "paes"
+          ]
+        },
+        {
+          "id": "c0000001-0000-0000-0000-000000000005",
+          "storeNumber": "L2-K02",
+          "displayName": "Bacio di Latte",
+          "category": "dining",
+          "isAnchor": false,
+          "mapX": 600.0,
+          "mapY": 330.0,
+          "width": 110.0,
+          "height": 80.0,
+          "openingHours": "10:00 às 22:00",
+          "phone": "+55 48 3000-0251",
+          "tags": [
+            "sorvete",
+            "gelato",
+            "italiano",
+            "sobremesa",
+            "pistache",
+            "chocolate"
+          ]
+        },
+        {
+          "id": "c0000001-0000-0000-0000-000000000006",
+          "storeNumber": "L2-250",
+          "displayName": "Bodytech",
+          "category": "fitness",
+          "isAnchor": true,
+          "mapX": 690.0,
+          "mapY": 430.0,
+          "width": 230.0,
+          "height": 180.0,
+          "openingHours": "06:00 às 22:00",
+          "phone": "+55 48 3000-0260",
+          "tags": [
+            "academia",
+            "musculacao",
+            "treino",
+            "natacao",
+            "spinning",
+            "fitness"
+          ]
+        },
+        {
+          "id": "c0000001-0000-0000-0000-000000000007",
+          "storeNumber": "L2-WC",
+          "displayName": "Sanitários Piso L2",
+          "category": "restroom",
+          "isAnchor": false,
+          "mapX": 100.0,
+          "mapY": 450.0,
+          "width": 90.0,
+          "height": 80.0,
+          "openingHours": "10:00 às 22:00",
+          "phone": "",
+          "tags": [
+            "banheiro",
+            "sanitarios",
+            "pcd",
+            "masculino",
+            "feminino"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "44444444-4444-4444-4444-444444444444",
+      "levelOrder": 2,
+      "shortCode": "L3",
+      "displayName": "Piso L3 - Boulevard & Gastronomia",
+      "subtitle": "Outback, Coco Bambu, Cinema e Grifes",
+      "stores": [
+        {
+          "id": "d0000001-0000-0000-0000-000000000001",
+          "storeNumber": "L3-301",
+          "displayName": "Outback Steakhouse",
+          "category": "dining",
+          "isAnchor": true,
+          "mapX": 80.0,
+          "mapY": 110.0,
+          "width": 240.0,
+          "height": 190.0,
+          "openingHours": "11:30 às 23:00",
+          "phone": "+55 48 3000-0301",
+          "tags": [
+            "costela",
+            "chopp",
+            "cebola",
+            "outback",
+            "carne",
+            "restaurante australiano"
+          ]
+        },
+        {
+          "id": "d0000001-0000-0000-0000-000000000002",
+          "storeNumber": "L3-305",
+          "displayName": "Coco Bambu",
+          "category": "dining",
+          "isAnchor": true,
+          "mapX": 680.0,
+          "mapY": 110.0,
+          "width": 250.0,
+          "height": 190.0,
+          "openingHours": "11:30 às 23:00",
+          "phone": "+55 48 3000-0305",
+          "tags": [
+            "camarao",
+            "frutos do mar",
+            "peixe",
+            "restaurante",
+            "jantar",
+            "almoco"
+          ]
+        },
+        {
+          "id": "d0000001-0000-0000-0000-000000000003",
+          "storeNumber": "L3-312",
+          "displayName": "Madero Burger & Grill",
+          "category": "dining",
+          "isAnchor": false,
+          "mapX": 350.0,
+          "mapY": 110.0,
+          "width": 160.0,
+          "height": 130.0,
+          "openingHours": "11:30 às 22:30",
+          "phone": "+55 48 3000-0312",
+          "tags": [
+            "hamburguer",
+            "cheeseburger",
+            "batata frita",
+            "lanche",
+            "carne"
+          ]
+        },
+        {
+          "id": "d0000001-0000-0000-0000-000000000004",
+          "storeNumber": "L3-CIN",
+          "displayName": "Cinesystem Cinemas (7 Salas)",
+          "category": "cinema",
+          "isAnchor": true,
+          "mapX": 680.0,
+          "mapY": 380.0,
+          "width": 250.0,
+          "height": 220.0,
+          "openingHours": "13:00 às 22:30",
+          "phone": "+55 48 3000-0350",
+          "tags": [
+            "cinema",
+            "filmes",
+            "pipoca",
+            "3d",
+            "salas",
+            "ingresso",
+            "lazer"
+          ]
+        },
+        {
+          "id": "d0000001-0000-0000-0000-000000000005",
+          "storeNumber": "L3-325",
+          "displayName": "Hugo Boss",
+          "category": "apparel",
+          "isAnchor": false,
+          "mapX": 80.0,
+          "mapY": 420.0,
+          "width": 140.0,
+          "height": 120.0,
+          "openingHours": "10:00 às 22:00",
+          "phone": "+55 48 3000-0325",
+          "tags": [
+            "boss",
+            "terno",
+            "luxo",
+            "alfaiataria",
+            "moda masculina",
+            "camisa",
+            "relogio"
+          ]
+        },
+        {
+          "id": "d0000001-0000-0000-0000-000000000006",
+          "storeNumber": "L3-330",
+          "displayName": "Tommy Hilfiger",
+          "category": "apparel",
+          "isAnchor": false,
+          "mapX": 240.0,
+          "mapY": 420.0,
+          "width": 140.0,
+          "height": 120.0,
+          "openingHours": "10:00 às 22:00",
+          "phone": "+55 48 3000-0330",
+          "tags": [
+            "tommy",
+            "polo",
+            "jaqueta",
+            "camisa",
+            "moda premium",
+            "tenis"
+          ]
+        },
+        {
+          "id": "d0000001-0000-0000-0000-000000000007",
+          "storeNumber": "L3-FOOD",
+          "displayName": "Praça de Alimentação Geral",
+          "category": "dining",
+          "isAnchor": false,
+          "mapX": 410.0,
+          "mapY": 420.0,
+          "width": 230.0,
+          "height": 130.0,
+          "openingHours": "10:00 às 22:00",
+          "phone": "",
+          "tags": [
+            "fast food",
+            "mcdonalds",
+            "spoleto",
+            "bobs",
+            "giraffas",
+            "pratos",
+            "refeicao"
+          ]
+        },
+        {
+          "id": "d0000001-0000-0000-0000-000000000008",
+          "storeNumber": "L3-LOU",
+          "displayName": "Lounge do Piano Fritz Dobbert",
+          "category": "services",
+          "isAnchor": false,
+          "mapX": 440.0,
+          "mapY": 280.0,
+          "width": 120.0,
+          "height": 80.0,
+          "openingHours": "10:00 às 22:00",
+          "phone": "",
+          "tags": [
+            "lounge",
+            "descanso",
+            "piano",
+            "musica",
+            "descanso",
+            "boulevard"
+          ]
+        },
+        {
+          "id": "d0000001-0000-0000-0000-000000000009",
+          "storeNumber": "L3-WC",
+          "displayName": "Sanitários Piso L3",
+          "category": "restroom",
+          "isAnchor": false,
+          "mapX": 570.0,
+          "mapY": 280.0,
+          "width": 80.0,
+          "height": 80.0,
+          "openingHours": "10:00 às 22:00",
+          "phone": "",
+          "tags": [
+            "banheiro",
+            "sanitarios",
+            "pcd",
+            "masculino",
+            "feminino",
+            "cinema"
+          ]
+        }
+      ]
+    }
+  ]
+}
