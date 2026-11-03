@@ -94,29 +94,45 @@ private struct CityMapStageView: View {
                         .foregroundStyle(Color.blue.opacity(0.32))
                         .stroke(Color.cyan, lineWidth: 2.5)
 
-                    // Marcador de entrada compacto e moderno no centro do prédio
+                    // Marcador adaptativo rigorosamente contido nos limites do polígono do shopping
+                    // 1. Passamos "" como título para evitar que o MapKit desenhe o texto cinza redundante no chão
+                    // 2. Ancorado no .center do polígono geográfico
+                    // 3. Quando o usuário dá zoom out (> 1400m), colapsa para um ícone compacto que cabe no polígono
+                    // 4. Quando aproximado (<= 1400m), exibe a pílula com escala proporcional adaptativa
                     Annotation(
-                        viewModel.mall.name,
+                        "",
                         coordinate: viewModel.mallCoordinate,
-                        anchor: .bottom
+                        anchor: .center
                     ) {
                         Button {
                             viewModel.enterMall()
                         } label: {
-                            HStack(spacing: 6) {
-                                Image(systemName: "building.2.crop.circle.fill")
-                                    .font(.system(size: 13, weight: .bold))
-                                    .foregroundStyle(.cyan)
-                                Text(viewModel.mall.name)
+                            if viewModel.cityCameraDistance > 1400.0 {
+                                Image(systemName: "building.2.fill")
                                     .font(.system(size: 11, weight: .bold))
                                     .foregroundStyle(.white)
+                                    .frame(width: 24, height: 24)
+                                    .background(Color.blue)
+                                    .clipShape(.circle)
+                                    .overlay(Circle().stroke(Color.white, lineWidth: 1.5))
+                                    .shadow(color: .black.opacity(0.35), radius: 4, y: 2)
+                            } else {
+                                HStack(spacing: 6) {
+                                    Image(systemName: "building.2.crop.circle.fill")
+                                        .font(.system(size: 12, weight: .bold))
+                                        .foregroundStyle(.cyan)
+                                    Text(viewModel.mall.name)
+                                        .font(.system(size: 11, weight: .bold))
+                                        .foregroundStyle(.white)
+                                }
+                                .padding(.horizontal, 9)
+                                .padding(.vertical, 5)
+                                .background(Color(red: 0.10, green: 0.12, blue: 0.18).opacity(0.92))
+                                .clipShape(.capsule)
+                                .overlay(Capsule().stroke(Color.cyan.opacity(0.8), lineWidth: 1.2))
+                                .shadow(color: .black.opacity(0.35), radius: 6, y: 3)
+                                .scaleEffect(viewModel.cityAnnotationScale)
                             }
-                            .padding(.horizontal, 10)
-                            .padding(.vertical, 6)
-                            .background(Color(red: 0.10, green: 0.12, blue: 0.18).opacity(0.92))
-                            .clipShape(.capsule)
-                            .overlay(Capsule().stroke(Color.cyan.opacity(0.7), lineWidth: 1.5))
-                            .shadow(color: .black.opacity(0.35), radius: 6, y: 3)
                         }
                         .buttonStyle(.plain)
                     }
