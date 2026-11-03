@@ -28,6 +28,21 @@ public struct MallConfigDTO: Codable, Sendable, Identifiable {
     public struct CanvasDTO: Codable, Sendable {
         public let width: Double
         public let height: Double
+        public let corridorWidth: Double?
+        public let initialZoom: Double?
+        public let minZoom: Double?
+        public let maxZoom: Double?
+
+        public var metrics: MallCanvasMetrics {
+            MallCanvasMetrics(
+                width: width,
+                height: height,
+                corridorWidth: corridorWidth ?? 180.0,
+                initialZoom: initialZoom ?? 1.0,
+                minZoom: minZoom ?? 0.5,
+                maxZoom: maxZoom ?? 3.5
+            )
+        }
     }
 }
 
