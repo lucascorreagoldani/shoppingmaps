@@ -2,14 +2,19 @@ import SwiftUI
 
 // MARK: - Visualização Interior do Shopping em Escala Ampliada (MALL-{andar})
 // O mapa da cidade desaparece. A câmera se move livremente pelo interior do shopping,
-// enquanto a carcaça, corredores e lojas permanecem estáticos no espaço.
+// enquanto a carcaça, corredores e lojas permanecem estáticos no espaço com escala ampla e legível.
 
 public struct MallInteriorView: View {
     @Bindable var viewModel: MallMapViewModel
 
-    // Dimensões do Canvas Interior em Escala Espaçosa (1 metro é maior)
-    private let interiorWidth: CGFloat = 1200
-    private let interiorHeight: CGFloat = 620
+    // Dimensões do Canvas Interior lidas dinamicamente da configuração do Shopping
+    private var interiorWidth: CGFloat {
+        CGFloat(viewModel.mall.mapWidth)
+    }
+
+    private var interiorHeight: CGFloat {
+        CGFloat(viewModel.mall.mapHeight)
+    }
 
     public var body: some View {
         GeometryReader { geometry in
@@ -51,7 +56,7 @@ public struct MallInteriorView: View {
                         MagnifyGesture()
                             .onChanged { value in
                                 let newZoom = viewModel.lastInteriorZoom * value.magnification
-                                viewModel.interiorZoom = min(max(newZoom, 0.6), 3.5)
+                                viewModel.interiorZoom = min(max(newZoom, 0.35), 3.0)
                             }
                             .onEnded { _ in
                                 viewModel.lastInteriorZoom = viewModel.interiorZoom
@@ -75,77 +80,122 @@ private struct MallInteriorFloorPlanView: View {
     let height: CGFloat
     let onStoreSelected: (Store) -> Void
 
-    // Formato alongado do Villa Romana Shopping (~3.5:1)
-    private var buildingWidth: CGFloat { width * 0.90 }
-    private var buildingHeight: CGFloat { height * 0.70 }
+    // Estrutura perimetral arquitetural
+    private var buildingWidth: CGFloat { width - 160.0 }
+    private var buildingHeight: CGFloat { height - 240.0 }
 
     var body: some View {
         ZStack {
             // MARK: - 1. Carcaça Externa do Prédio (Paredes Estruturais)
-            RoundedRectangle(cornerRadius: 36)
+            RoundedRectangle(cornerRadius: 48)
                 .fill(Color(uiColor: .secondarySystemBackground))
                 .frame(width: buildingWidth, height: buildingHeight)
                 .overlay(
-                    RoundedRectangle(cornerRadius: 36)
-                        .stroke(Color.primary.opacity(0.12), lineWidth: 3)
+                    RoundedRectangle(cornerRadius: 48)
+                        .stroke(Color.primary.opacity(0.12), lineWidth: 3.5)
                 )
-                .shadow(color: .black.opacity(0.18), radius: 24, y: 12)
+                .shadow(color: .black.opacity(0.16), radius: 30, y: 15)
 
-            // MARK: - 2. Corredores de Circulação de Pedestres (Boulevard)
+            // MARK: - 2. Corredores de Circulação de Pedestres (Boulevard Waze Indoor)
             ZStack {
-                // Corredor longitudinal amplo
-                RoundedRectangle(cornerRadius: 18)
+                // Corredor longitudinal amplo (Eixo Leste-Oeste)
+                RoundedRectangle(cornerRadius: 24)
                     .fill(Color(uiColor: .systemBackground))
-                    .frame(width: buildingWidth * 0.88, height: buildingHeight * 0.28)
+                    .frame(width: buildingWidth - 60, height: 320)
                     .overlay(
-                        RoundedRectangle(cornerRadius: 18)
-                            .stroke(Color.blue.opacity(0.15), lineWidth: 1.5)
+                        RoundedRectangle(cornerRadius: 24)
+                            .stroke(Color.blue.opacity(0.12), lineWidth: 1.5)
+                    )
+
+                // Boulevard de acesso frontal (Conecta a Entrada Principal ao Átrio)
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(Color(uiColor: .systemBackground))
+                    .frame(width: 260, height: 360)
+                    .offset(y: -180)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(Color.blue.opacity(0.10), lineWidth: 1.5)
                     )
 
                 // Átrio central circular (Vão das escadas rolantes e elevadores)
                 Circle()
                     .fill(Color(uiColor: .systemBackground))
-                    .frame(width: buildingHeight * 0.44, height: buildingHeight * 0.44)
+                    .frame(width: 300, height: 300)
                     .overlay(
                         Circle()
-                            .stroke(Color.blue.opacity(0.25), lineWidth: 2)
+                            .stroke(Color.blue.opacity(0.25), lineWidth: 2.5)
+                    )
+                    .overlay(
+                        Circle()
+                            .stroke(Color.cyan.opacity(0.20), lineWidth: 1.0)
+                            .padding(12)
                     )
 
-                // Ícone central discreto das escadas rolantes / conexões verticais
-                VStack(spacing: 2) {
-                    Image(systemName: "figure.stairs")
-                        .font(.system(size: 16, weight: .bold))
-                        .foregroundStyle(.blue)
-                    Text("Escadas & Elevador")
-                        .font(.system(size: 8, weight: .bold))
+                // Núcleo de Conexão Vertical (Escadas Rolantes & Elevadores)
+                VStack(spacing: 4) {
+                    HStack(spacing: 8) {
+                        Image(systemName: "figure.stairs")
+                            .font(.system(size: 20, weight: .bold))
+                            .foregroundStyle(.blue)
+
+                        Image(systemName: "arrow.up.and.down.circle.fill")
+                            .font(.system(size: 20, weight: .bold))
+                            .foregroundStyle(.cyan)
+                    }
+
+                    Text("Átrio Central")
+                        .font(.system(size: 13, weight: .bold))
+                        .foregroundStyle(.primary)
+
+                    Text("Escadas Rolantes & Elevadores")
+                        .font(.system(size: 9, weight: .semibold))
                         .foregroundStyle(.secondary)
                 }
+
+                // Identificadores Sutis de Alas no Piso
+                HStack {
+                    Text("ALA OESTE")
+                        .font(.system(size: 14, weight: .black, design: .rounded))
+                        .foregroundStyle(Color.secondary.opacity(0.25))
+                        .tracking(3)
+                        .padding(.leading, 80)
+
+                    Spacer()
+
+                    Text("ALA LESTE")
+                        .font(.system(size: 14, weight: .black, design: .rounded))
+                        .foregroundStyle(Color.secondary.opacity(0.25))
+                        .tracking(3)
+                        .padding(.trailing, 80)
+                }
+                .frame(width: buildingWidth - 100)
             }
 
-            // MARK: - 3. Pórtico Frontal de Entrada (Rua Santa Mônica)
+            // MARK: - 3. Pórticos de Acesso
+            // Entrada Principal (Madre Benvenuta)
             HStack(spacing: 6) {
                 Image(systemName: "door.left.hand.open")
                     .font(.caption2.weight(.bold))
                     .foregroundStyle(.cyan)
-                Text("Entrada Principal • Madre Benvenuta")
-                    .font(.system(size: 9, weight: .black))
+                Text("Entrada Principal • Av. Me. Benvenuta")
+                    .font(.system(size: 11, weight: .black))
                     .foregroundStyle(.cyan)
             }
-            .padding(.horizontal, 14)
-            .padding(.vertical, 4)
+            .padding(.horizontal, 16)
+            .padding(.vertical, 6)
             .background(Color(uiColor: .systemBackground))
             .clipShape(.capsule)
             .overlay(Capsule().stroke(Color.cyan, lineWidth: 1.5))
-            .shadow(color: .cyan.opacity(0.4), radius: 6)
-            .offset(y: -buildingHeight * 0.50)
+            .shadow(color: .cyan.opacity(0.35), radius: 8)
+            .offset(y: -(buildingHeight / 2.0))
 
             // MARK: - 4. Blocos de Lojas Espaçosas no Interior
             ForEach(stores) { store in
                 let isSelected = selectedStore?.id == store.id
                 StoreInteriorBlockView(
                     store: store,
-                    buildingWidth: buildingWidth,
-                    buildingHeight: buildingHeight,
+                    interiorWidth: width,
+                    interiorHeight: height,
                     isSelected: isSelected
                 ) {
                     onStoreSelected(store)
@@ -160,81 +210,91 @@ private struct MallInteriorFloorPlanView: View {
 
 private struct StoreInteriorBlockView: View {
     let store: Store
-    let buildingWidth: CGFloat
-    let buildingHeight: CGFloat
+    let interiorWidth: CGFloat
+    let interiorHeight: CGFloat
     let isSelected: Bool
     let onTap: () -> Void
 
-    // Mapeamento proporcional de coordenadas do modelo (0..1000, 0..700) para a carcaça interna
+    // Posicionamento exato baseado nas coordenadas de métrica arquitetural do Canvas
     private var posX: CGFloat {
-        let ratio = CGFloat(store.mapX) / 1000.0
-        return (ratio * (buildingWidth - 120)) + 60 - (buildingWidth / 2.0)
+        CGFloat(store.mapX) + (CGFloat(store.width) / 2.0) - (interiorWidth / 2.0)
     }
 
     private var posY: CGFloat {
-        let ratio = CGFloat(store.mapY) / 700.0
-        return (ratio * (buildingHeight - 90)) + 45 - (buildingHeight / 2.0)
+        CGFloat(store.mapY) + (CGFloat(store.height) / 2.0) - (interiorHeight / 2.0)
     }
 
     private var blockWidth: CGFloat {
-        max(CGFloat(store.width) * (buildingWidth / 1000.0), 65)
+        CGFloat(store.width)
     }
 
     private var blockHeight: CGFloat {
-        max(CGFloat(store.height) * (buildingHeight / 700.0), 45)
+        CGFloat(store.height)
     }
 
     var body: some View {
         Button(action: onTap) {
             ZStack {
                 // Fundo com a cor da categoria
-                RoundedRectangle(cornerRadius: store.isAnchor ? 12 : 8)
-                    .fill(store.category.color.opacity(isSelected ? 0.45 : (store.isAnchor ? 0.28 : 0.20)))
+                RoundedRectangle(cornerRadius: store.isAnchor ? 16 : 10)
+                    .fill(store.category.color.opacity(isSelected ? 0.40 : (store.isAnchor ? 0.22 : 0.15)))
 
-                // Borda
-                RoundedRectangle(cornerRadius: store.isAnchor ? 12 : 8)
+                // Borda arquitetural
+                RoundedRectangle(cornerRadius: store.isAnchor ? 16 : 10)
                     .stroke(
-                        isSelected ? Color.white : store.category.color.opacity(0.85),
-                        lineWidth: isSelected ? 3 : 1.5
+                        isSelected ? Color.blue : store.category.color.opacity(0.85),
+                        lineWidth: isSelected ? 3.5 : 1.5
                     )
 
                 // Conteúdo da Loja
-                VStack(spacing: 3) {
-                    HStack(spacing: 3) {
+                VStack(alignment: .leading, spacing: 6) {
+                    HStack(spacing: 5) {
                         Image(systemName: store.category.iconName)
-                            .font(.system(size: store.isAnchor ? 12 : 10, weight: .bold))
+                            .font(.system(size: store.isAnchor ? 15 : 12, weight: .bold))
                             .foregroundStyle(store.category.color)
 
                         if store.isAnchor {
                             Text("ÂNCORA")
-                                .font(.system(size: 7, weight: .black))
-                                .padding(.horizontal, 4)
-                                .padding(.vertical, 1)
+                                .font(.system(size: 8, weight: .black))
+                                .padding(.horizontal, 6)
+                                .padding(.vertical, 2)
                                 .background(store.category.color.opacity(0.25))
                                 .clipShape(.capsule)
                                 .foregroundStyle(store.category.color)
                         }
+
+                        Spacer()
+
+                        Text(store.storeNumber)
+                            .font(.system(size: 10, weight: .bold, design: .monospaced))
+                            .foregroundStyle(.secondary)
                     }
 
                     Text(store.name)
-                        .font(.system(size: store.isAnchor ? 11 : 9, weight: .bold))
+                        .font(.system(size: store.isAnchor ? 16 : 12, weight: .bold))
                         .foregroundStyle(.primary)
                         .lineLimit(2)
-                        .multilineTextAlignment(.center)
+                        .multilineTextAlignment(.leading)
                         .minimumScaleFactor(0.75)
-                        .padding(.horizontal, 4)
 
-                    Text(store.storeNumber)
-                        .font(.system(size: 8, weight: .semibold, design: .monospaced))
-                        .foregroundStyle(.secondary)
+                    Spacer(minLength: 0)
+
+                    HStack {
+                        Text(store.category.displayName)
+                            .font(.system(size: 9, weight: .semibold))
+                            .foregroundStyle(.secondary)
+                            .lineLimit(1)
+
+                        Spacer()
+                    }
                 }
-                .padding(4)
+                .padding(store.isAnchor ? 12 : 8)
             }
             .frame(width: blockWidth, height: blockHeight)
             .shadow(
-                color: isSelected ? Color.blue.opacity(0.5) : Color.black.opacity(0.08),
-                radius: isSelected ? 8 : 2,
-                y: isSelected ? 2 : 1
+                color: isSelected ? Color.blue.opacity(0.45) : Color.black.opacity(0.08),
+                radius: isSelected ? 10 : 3,
+                y: isSelected ? 3 : 1
             )
         }
         .buttonStyle(.plain)
@@ -242,4 +302,3 @@ private struct StoreInteriorBlockView: View {
         .sensoryFeedback(.selection, trigger: isSelected)
     }
 }
-

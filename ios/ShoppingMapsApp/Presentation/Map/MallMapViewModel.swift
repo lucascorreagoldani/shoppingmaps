@@ -47,6 +47,17 @@ public final class MallMapViewModel {
     public var cameraPosition: MapCameraPosition
     public var cityCameraDistance: Double = 750.0
 
+    /// Escala adaptativa do marcador no Apple Maps para permanecer rigorosamente contido no polígono do prédio
+    public var cityAnnotationScale: CGFloat {
+        if cityCameraDistance <= 750.0 {
+            return 1.0
+        } else if cityCameraDistance <= 1400.0 {
+            return CGFloat(750.0 / cityCameraDistance)
+        } else {
+            return 0.54
+        }
+    }
+
     // MARK: - Estimativas de Distância e Tempo de Deslocamento
     public var userDistanceText: String?
     public var userETAText: String?
@@ -54,8 +65,8 @@ public final class MallMapViewModel {
 
     // MARK: - 3. Transformações de Câmera do Interior (Estágio MALL-{andar})
     // Os objetos ficam estáticos, quem se move é a câmera interna
-    public var interiorZoom: CGFloat = 1.0
-    public var lastInteriorZoom: CGFloat = 1.0
+    public var interiorZoom: CGFloat = 0.55
+    public var lastInteriorZoom: CGFloat = 0.55
     public var interiorPan: CGSize = .zero
     public var lastInteriorPan: CGSize = .zero
 
@@ -147,8 +158,8 @@ public final class MallMapViewModel {
 
     public func recenterInteriorCamera() {
         withAnimation(.spring(response: 0.4, dampingFraction: 0.8)) {
-            interiorZoom = 1.0
-            lastInteriorZoom = 1.0
+            interiorZoom = 0.55
+            lastInteriorZoom = 0.55
             interiorPan = .zero
             lastInteriorPan = .zero
         }
@@ -156,7 +167,7 @@ public final class MallMapViewModel {
 
     public func zoomInInterior() {
         withAnimation(.easeInOut(duration: 0.2)) {
-            let next = min(interiorZoom + 0.4, 3.5)
+            let next = min(interiorZoom + 0.25, 3.0)
             interiorZoom = next
             lastInteriorZoom = next
         }
@@ -164,7 +175,7 @@ public final class MallMapViewModel {
 
     public func zoomOutInterior() {
         withAnimation(.easeInOut(duration: 0.2)) {
-            let next = max(interiorZoom - 0.4, 0.6)
+            let next = max(interiorZoom - 0.25, 0.35)
             interiorZoom = next
             lastInteriorZoom = next
         }
