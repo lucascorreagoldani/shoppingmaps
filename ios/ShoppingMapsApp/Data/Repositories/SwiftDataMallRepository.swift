@@ -33,8 +33,12 @@ public final class SwiftDataMallRepository: MallRepositoryProtocol {
     }
 
     public func saveMall(from dto: MallConfigDTO) async throws -> ShoppingMall {
-        // Se já existe pelo slug ou id, remove o antigo para atualização limpa
-        if let existing = try await fetchMall(bySlug: dto.slug) {
+        // Se já existe pelo id ou slug, remove o antigo para atualização limpa
+        var existing = try await fetchMall(byId: dto.id)
+        if existing == nil {
+            existing = try await fetchMall(bySlug: dto.slug)
+        }
+        if let existing {
             modelContext.delete(existing)
         }
 
